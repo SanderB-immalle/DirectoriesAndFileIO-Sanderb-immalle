@@ -13,7 +13,7 @@ i.v.m. MSTest:
 - Zijn de attributen `[TestMethod]`, `[TestClass]`, ... noodzakelijk? (Test uit!)
 	> Ja, zo weet QUnit welke methods en of classes hij moet testen.
 - Wat is de shortcut om alle tests uit te voeren in VS?
-	> CTRL R, A
+	> CTRL R, CTRL A
 
 i.v.m. Files en Directories:
 
