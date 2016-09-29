@@ -29,8 +29,12 @@ i.v.m. Files en Directories:
 i.v.m. duidelijkheid/geschiedenis van de code:
 
 - Lukken de testen in de commit 3ffe2c86? Waarom (niet)?
+	> De verwachte waarde en de waarde dat je moet checken zijn omgewisseld.
 - Wat lost commit d0320b6a op?
+	> Je hebt de 2 waardes omgewisseld, nu staan ze juist. 
 - Wat is het probleem met de files in commit 9d184949?
+	> Je voert meerdere malen dezelfde test uit.
 - Wat doet commit 9b3e4065? Maakt dit de code makkelijker leesbaar? Makkelijker uitbreidbaar?
+	> Veel meer variabelen, dus makkelijker uitbreidbaar.
 
 
