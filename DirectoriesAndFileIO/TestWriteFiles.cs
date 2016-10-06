@@ -8,13 +8,13 @@ using System.IO;
 namespace DirectoriesAndFileIO
 {
     [TestClass]
-    class TestWriteFiles
+    public class TestWriteFiles
     {
         string testDir = "";
         string fileA = "";
         string fileAContents = "";
         string fileB = "";
-        string fileBContents = "";
+        string[] fileBContents = new string[] {"one", "two" };
         string subDir = "";
         string subDirFile = "";
         string subDirFileContents = "";
@@ -29,7 +29,6 @@ namespace DirectoriesAndFileIO
             subDir = Path.Combine(testDir, "subDir");
             subDirFile = Path.Combine(subDir, subDirFile);
             fileAContents = "This is a.txt.";
-            fileBContents = "This is b.txt. \n b contains a newline \n b is innovative \n be like b!";
             subDirFileContents = "This is a file in a sub-directory.";
             
             Directory.CreateDirectory(testDir);
@@ -46,18 +45,30 @@ namespace DirectoriesAndFileIO
         }
 
         [TestMethod]
-        public void WriteAllText()
-        {
-            
-            StreamReader read = new StreamReader(fileA);
-
+        public void TestWriteAllText()
+        {        
+           
             File.WriteAllText(fileA, fileAContents);
-            
-            string result = read.ReadToEnd();
-            Assert.AreEqual(result, fileAContents);
 
-            read.Close();
+
+
+            StreamReader reader = new StreamReader(fileA);
+            string result = reader.ReadToEnd();
+            Assert.AreEqual(result, fileAContents);        
+            reader.Close();
         }
+
+        [TestMethod]
+        public void TestWriteAllLines()
+        {
+            File.WriteAllLines(fileB, fileBContents );
+
+            StreamReader reader = new StreamReader(fileB);
+            string result = reader.ReadToEnd();
+            Assert.AreEqual(result, fileBContents);
+            reader.Close();
+        }
+        
         
     }
 }
