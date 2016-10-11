@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
+using System.Text.RegularExpressions;
+
 namespace DirectoriesAndFileIO
 {
     [TestClass]
@@ -65,8 +67,22 @@ namespace DirectoriesAndFileIO
 
             StreamReader reader = new StreamReader(fileB);
             string result = reader.ReadToEnd();
-            Assert.AreEqual(result, fileBContents);
+            
+            Assert.AreEqual(result, "one\r\ntwo\r\n");
             reader.Close();
+        }
+        
+        [TestMethod]
+        public void TestStreamWriter()
+        {
+            StreamWriter writer = new StreamWriter(fileA);
+            writer.Write(fileAContents);
+            writer.Close();
+            StreamReader reader = new StreamReader(fileA);
+            var l = reader.ReadToEnd();
+            reader.Close();
+
+            Assert.AreEqual(l, fileAContents);
         }
         
         
