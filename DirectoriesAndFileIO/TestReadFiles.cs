@@ -26,7 +26,7 @@ namespace DirectoriesAndFileIO
             subDir = Path.Combine(testDir, "subDir");
             subDirFile = Path.Combine(subDir, subDirFile);
             fileAContents = "This is a.txt.";
-            fileBContents = "This is b.txt.";
+            fileBContents = "This is b.txt. \n b contains a newline \n b is innovative \n be like b!";
             subDirFileContents = "This is a file in a sub-directory.";
 
             Directory.CreateDirectory(testDir);
@@ -58,6 +58,18 @@ namespace DirectoriesAndFileIO
 
             Assert.AreEqual(1, lines.Length);
             Assert.AreEqual(fileAContents, lines[0]);
+        }
+        [TestMethod]
+        public void TestFileOpenText()
+        {
+            StreamReader s = File.OpenText(fileA);
+            string txt = "";
+            txt = s.ReadLine();
+            
+
+            Assert.AreEqual(fileAContents, txt);
+            s.Close();
+            
         }
 
         [TestMethod]
@@ -93,6 +105,16 @@ namespace DirectoriesAndFileIO
 
             stream.Close();
         }
+        [TestMethod]
+        public void TestReadAllText()
+        {
+            StreamReader s = new StreamReader(fileB);
+            string txt = s.ReadToEnd();
+            Assert.IsTrue(txt.Contains("be like b"));
+            s.Close();
+        }
+
+
 
     }
 }
